@@ -1,0 +1,16 @@
+name: khateb_date_picker_example
+description: Example app demonstrating the khateb_date_picker package.
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  khateb_date_picker:
+    path: ../
+
+flutter:
+  uses-material-design: true
