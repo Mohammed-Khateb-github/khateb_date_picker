@@ -3,9 +3,22 @@
 
 [![pub package](https://img.shields.io/pub/v/khateb_date_picker.svg)](https://pub.dev/packages/khateb_date_picker)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![pub points](https://img.shields.io/pub/points/khateb_date_picker)](https://pub.dev/packages/khateb_date_picker/score)
 
 A beautiful, customisable **iOS-style drum-roll date picker** for Flutter.  
 Zero external dependencies – pure Flutter.
+
+---
+
+## 📸 Screenshots
+
+| Light (default) | Dark | Custom |
+|:-:|:-:|:-:|
+| ![Light theme](https://raw.githubusercontent.com/Mohammed-Khateb-github/khateb_date_picker/main/screenshots/default.jpg) | ![Dark theme](https://raw.githubusercontent.com/Mohammed-Khateb-github/khateb_date_picker/main/screenshots/dark.jpg) | ![Custom theme](https://raw.githubusercontent.com/Mohammed-Khateb-github/khateb_date_picker/main/screenshots/custom.jpg) |
+
+| Light custom button | Dark custom button |
+|:-:|:-:|
+| ![Light custom](https://raw.githubusercontent.com/Mohammed-Khateb-github/khateb_date_picker/main/screenshots/light_custom.jpg) | ![Dark custom](https://raw.githubusercontent.com/Mohammed-Khateb-github/khateb_date_picker/main/screenshots/dark_custom.jpg) |
 
 ---
 
@@ -22,6 +35,15 @@ Zero external dependencies – pure Flutter.
 ---
 
 ## 🚀 Quick start
+
+Add to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  khateb_date_picker: ^1.0.1
+```
+
+Then use it:
 
 ```dart
 import 'package:khateb_date_picker/khateb_date_picker.dart';
@@ -70,7 +92,7 @@ KhatebDatePicker.show(
 );
 ```
 
-### Custom colours
+### Custom button colour
 
 ```dart
 KhatebDatePicker.show(
@@ -78,9 +100,7 @@ KhatebDatePicker.show(
   title: 'Birthdate',
   subtitle: 'Pick a date',
   buttonText: 'Confirm',
-  theme: KhatebDatePickerTheme.light(
-    buttonColor: Colors.deepPurple,
-  ),
+  theme: KhatebDatePickerTheme.light(buttonColor: Colors.deepPurple),
 );
 ```
 
@@ -106,9 +126,9 @@ KhatebDatePicker.show(
 
 ---
 
-## 🧩 Embed the widget directly
+## 🧩 Embed the widget inline
 
-You can also drop the picker inline inside any widget tree without the bottom-sheet wrapper:
+Drop the picker directly inside any widget tree without the bottom-sheet:
 
 ```dart
 import 'package:khateb_date_picker/khateb_date_picker.dart';
@@ -135,7 +155,7 @@ ModernDatePickerWidget(
 | `subtitleFontSize` | `double` | `14` |
 | `selectedItemColor` | `Color` | `0xFF2D4E73` |
 | `unselectedItemColor` | `Color` | `0xFF757980` |
-| `selectionHighlightColor` | `Color` | grey 8% |
+| `selectionHighlightColor` | `Color` | grey 8 % |
 | `selectionHighlightRadius` | `double` | `10` |
 | `buttonColor` | `Color` | `0xFF2998D6` |
 | `buttonTextColor` | `Color` | `white` |
