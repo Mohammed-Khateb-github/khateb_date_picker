@@ -7,15 +7,39 @@ import 'khateb_date_picker_theme.dart';
 
 /// A standalone iOS-style drum-roll date picker widget.
 ///
-/// You can embed this directly in any layout, or use [KhatebDatePicker.show]
-/// for the ready-made bottom-sheet flow.
+/// Displays three scrollable columns – **day**, **month**, and **year** –
+/// each rendered as a [ListWheelScrollView] with a smooth 3-D drum-roll effect.
+///
+/// You can embed this widget directly in any layout, or use
+/// [KhatebDatePicker.show] for the ready-made bottom-sheet flow.
+///
+/// ### Basic usage
+/// ```dart
+/// ModernDatePickerWidget(
+///   initialDate: DateTime(1995, 6, 15),
+///   minDate: DateTime(1980),
+///   maxDate: DateTime(2007),
+///   theme: KhatebDatePickerTheme.light(),
+///   onChanged: (date) => print(date),
+/// )
+/// ```
 class ModernDatePickerWidget extends StatefulWidget {
+  /// The date that is pre-selected when the widget first mounts.
   final DateTime initialDate;
+
+  /// The earliest date the user can scroll to.
   final DateTime minDate;
+
+  /// The latest date the user can scroll to.
   final DateTime maxDate;
+
+  /// Called every time the user scrolls to a new date.
   final ValueChanged<DateTime> onChanged;
+
+  /// Visual configuration. See [KhatebDatePickerTheme] for all options.
   final KhatebDatePickerTheme theme;
 
+  /// Creates a [ModernDatePickerWidget].
   const ModernDatePickerWidget({
     super.key,
     required this.initialDate,
@@ -101,13 +125,11 @@ class _ModernDatePickerWidgetState extends State<ModernDatePickerWidget> {
   bool _isLeapYear(int year) =>
       (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 
-  /// First valid day in the given month (respects global minDate).
   int _dayLowerBound(int year, int month) {
     if (year == _minYear && month == _minMonth) return _minDay;
     return 1;
   }
 
-  /// Last valid day in the given month (respects global maxDate).
   int _dayUpperBound(int year, int month) {
     int upper = _getDaysInMonth(year, month);
     if (year == _maxYear && month == _maxMonth) upper = min(upper, _maxDay);
@@ -117,7 +139,6 @@ class _ModernDatePickerWidgetState extends State<ModernDatePickerWidget> {
   int _dayCount(int year, int month) =>
       _dayUpperBound(year, month) - _dayLowerBound(year, month) + 1;
 
-  /// Clamp [day] so it stays within [_dayLowerBound]..[_dayUpperBound].
   int _clampDay(int year, int month, int day) {
     return day.clamp(_dayLowerBound(year, month), _dayUpperBound(year, month));
   }
@@ -144,8 +165,8 @@ class _ModernDatePickerWidgetState extends State<ModernDatePickerWidget> {
       final clamped = _clampDay(_selectedYear, _selectedMonth, _selectedDay);
       if (clamped != _selectedDay) {
         _selectedDay = clamped;
-        _dayController
-            .jumpToItem(_selectedDay - _dayLowerBound(_selectedYear, _selectedMonth));
+        _dayController.jumpToItem(
+            _selectedDay - _dayLowerBound(_selectedYear, _selectedMonth));
       }
     });
     if (!_isInitializing) {
@@ -160,8 +181,8 @@ class _ModernDatePickerWidgetState extends State<ModernDatePickerWidget> {
       final clamped = _clampDay(_selectedYear, _selectedMonth, _selectedDay);
       if (clamped != _selectedDay) {
         _selectedDay = clamped;
-        _dayController
-            .jumpToItem(_selectedDay - _dayLowerBound(_selectedYear, _selectedMonth));
+        _dayController.jumpToItem(
+            _selectedDay - _dayLowerBound(_selectedYear, _selectedMonth));
       }
     });
     if (!_isInitializing) {
@@ -250,7 +271,10 @@ class _ModernDatePickerWidgetState extends State<ModernDatePickerWidget> {
 
           // ── Top fade ────────────────────────────────────────────────────────
           Positioned(
-            top: 0, left: 0, right: 0, height: 60,
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 60,
             child: IgnorePointer(
               child: Container(
                 decoration: BoxDecoration(
@@ -266,7 +290,10 @@ class _ModernDatePickerWidgetState extends State<ModernDatePickerWidget> {
 
           // ── Bottom fade ──────────────────────────────────────────────────────
           Positioned(
-            bottom: 0, left: 0, right: 0, height: 60,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: 60,
             child: IgnorePointer(
               child: Container(
                 decoration: BoxDecoration(
