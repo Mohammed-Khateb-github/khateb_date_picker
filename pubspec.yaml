@@ -1,0 +1,21 @@
+name: khateb_date_picker
+description: A beautiful, customizable iOS-style drum-roll date picker for Flutter. Supports light/dark themes, custom colors, and a simple Future-based API.
+version: 1.0.0
+homepage: https://github.com/Mohammed-Khateb-github/khateb_date_picker
+repository: https://github.com/Mohammed-Khateb-github/khateb_date_picker
+issue_tracker: https://github.com/Mohammed-Khateb-github/khateb_date_picker/issues
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
